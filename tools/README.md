@@ -1,4 +1,4 @@
-# 1. Setup & Architecture
+# Setup & Architecture
 
 ## Local Environment: Ministack
 
@@ -6,7 +6,7 @@ Running local DynamoDB via **ministackorg/ministack** — AWS service emulator.
 
 ### Docker Compose Setup
 
-**File:** `~/Documents/tools/ministack/docker-compose.yml`
+**File:** `tools/ministack/docker-compose.yml`
 
 ```yaml
 version: '3.8'
@@ -42,8 +42,7 @@ networks:
 **Commands:**
 ```bash
 # Start
-cd ~/Documents/tools/ministack
-source ~/.gvm/scripts/gvm
+cd tools/ministack
 podman-compose up -d
 
 # Stop
@@ -62,7 +61,7 @@ curl -X POST http://localhost:4566/ \
 ### Data Structure
 
 ```
-~/Documents/tools/ministack/
+tools/ministack/
 ├── docker-compose.yml
 └── data/
     ├── dynamodb/    # DynamoDB persistent data
@@ -103,12 +102,3 @@ No actual AWS account needed. Dummy values sufficient.
 3. **Shared volume:** Extensible to multi-service setup (Postgres, Redis, etc.)
 4. **Persistence:** Data survives container restart
 5. **Tools:** GUI (DataGrip) + CLI (AWS SDK) for exploration
-
----
-
-## Next Steps
-
-1. Create first test table (via DataGrip or Go SDK)
-2. Learn DynamoDB access patterns
-3. Go SDK: CRUD operations
-4. Advanced: Transactions, Streams, GSI

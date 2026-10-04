@@ -25,6 +25,8 @@ Start with [docs/INDEX.md](docs/INDEX.md) for the full curriculum.
 
 ### 2. Set Up Local Environment
 
+See [tools/README.md](tools/README.md) for full setup (ministack, docker-compose, credentials).
+
 ```bash
 cd tools/ministack
 docker-compose up -d
