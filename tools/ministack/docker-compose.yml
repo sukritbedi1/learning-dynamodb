@@ -1,0 +1,29 @@
+version: '3.8'
+
+services:
+  ministack:
+    image: ministackorg/ministack:latest
+    container_name: ministack
+    ports:
+      - "4566:4566"
+      - "8000:8000"
+    volumes:
+      - ./data:/data
+    environment:
+      - SERVICES=dynamodb
+      - DEBUG=0
+      - DATA_DIR=/data/dynamodb
+      - DOCKER_HOST=unix:///var/run/docker.sock
+      - DYNAMODB_SHARE_DB=1
+    networks:
+      - ministack-net
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:4566/health || exit 1"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+      start_period: 10s
+
+networks:
+  ministack-net:
+    driver: bridge
